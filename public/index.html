@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-5 border border-0 p-4 mt-5 shadow-lg rounded-1">
+                <h2 class="text-secondary fs-3 d-flex justify-content-center">Login</h2>
+                <form action="" id="form-login">
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="">
+                        <label for="usuario">Usuario</label>
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="">
+                        <label for="password">Contraseña</label>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Login</button>
+
+                    <p class="mt-2 text-center">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalRecuperar">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </p>
+
+                    <!-- Modal Bootstrap -->
+                    
+                </form>
+                <div class="modal fade" id="modalRecuperar">
+                        <div class="modal-dialog">
+                            <div class="modal-content p-3">
+
+                                <h5>Recuperar contraseña</h5>
+
+                                <input type="email" id="emailRecuperar" class="form-control mb-2"
+                                    placeholder="Ingrese su correo">
+
+                                <button class="btn btn-primary" id="btnRecuperar">
+                                    Enviar nueva contraseña
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
