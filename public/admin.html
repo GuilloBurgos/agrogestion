@@ -1,47 +1,4 @@
-<!-- <!doctype html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container mt-5">
-        <h2>Registrar Trabajador</h2>
-
-        <form id="form-trabajador">
-
-            <input class="form-control mb-2" placeholder="Nombre completo" id="nombre">
-            <select class="form-select mb-2" name="tipo_documento" id="tipo_documento" required>
-                <option value="" selected>Tipo de documento</option>
-                <option value="CC">Cédula</option>
-                <option value="TI">Tarjeta de identidad</option>
-                <option value="CE">Cédula de extranjería</option>
-            </select>
-            <input class="form-control mb-2" placeholder="Número documento" id="numero_documento">
-            <select class="form-select mb-2" name="id_tipo_trabajo" id="id_tipo_trabajo">
-                
-            </select>
-            <input class="form-control mb-2" placeholder="Teléfono" id="telefono">
-            <input class="form-control mb-2" placeholder="Teléfono familiar" id="telefono_familiar">
-            <input class="form-control mb-2" placeholder="Dirección" id="direccion">
-            <input class="form-control mb-2" type="date" id="fecha_ingreso">
-            <textarea class="form-control mb-2" placeholder="Observaciones" id="observaciones"></textarea>
-
-            <button class="btn btn-primary">Registrar</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="js/trabajador.js"></script>
-</body>
-
-</html> -->
 <!doctype html>
 <html lang="es">
 
@@ -94,7 +51,7 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Gestión de Trabajadores</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <span class="badge bg-primary p-2"><i class="bi bi-person-circle"></i> Admin: Guillermo</span>
+                        <span class="badge bg-primary p-2"><i class="bi bi-person-circle"></i>Admin:<span id="nombreAdmin"></span></span>
                     </div>
                 </div>
 
@@ -102,13 +59,13 @@
                     <div class="col-md-4">
                         <div class="card p-3 bg-white text-dark border-start border-primary border-4">
                             <h6 class="text-muted">Total Trabajadores</h6>
-                            <h3 class="fw-bold">12</h3>
+                            <h3 class="fw-bold" id="totalTrabajadores">0</h3>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card p-3 bg-white text-dark border-start border-success border-4">
                             <h6 class="text-muted">Activos Hoy</h6>
-                            <h3 class="fw-bold">8</h3>
+                            <h3 class="fw-bold" id="trabajadoresActivos">0</h3>
                         </div>
                     </div>
                 </div>
@@ -186,6 +143,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/trabajador.js"></script>
+    <script src="js/panel.js"></script>
 </body>
 
 </html>

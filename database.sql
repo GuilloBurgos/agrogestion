@@ -95,13 +95,13 @@ VALUES ('María Gómez', 'empleado456', 'empleadopass', 'DUENIO','duenio@gmail.c
 
 
 
-INSERT INTO trabajadores (
-    nombre_completo, tipo_documento, numero_documento, id_tipo_trabajo,
-    telefono, telefono_familiar, direccion, estado, fecha_ingreso, observaciones
-) VALUES
-('Juan Pérez', 'CC', '1020304050', 'Mantenimiento general', '3001234567', '3109876543', 'Vereda El Roble, Finca La Esperanza', 'activo', '2023-05-10', 'Experto en reparaciones eléctricas'),
-('María Gómez', 'CC', '1122334455', 'Alimentación animal', '3012345678', '3118765432', 'Vereda La Palma, Finca El Progreso', 'activo', '2022-11-20', 'Responsable de alimentación de ganado'),
-('Carlos Ruiz', 'TI', '9988776655', 'Limpieza de corrales', '3023456789', '3127654321', 'Vereda El Sauce, Finca La Victoria', 'inactivo', '2021-08-15', 'Actualmente no está en labores activas');
+-- INSERT INTO trabajadores (
+--     nombre_completo, tipo_documento, numero_documento, id_tipo_trabajo,
+--     telefono, telefono_familiar, direccion, estado, fecha_ingreso, observaciones
+-- ) VALUES
+-- ('Juan Pérez', 'CC', '1020304050', 'Mantenimiento general', '3001234567', '3109876543', 'Vereda El Roble, Finca La Esperanza', 'activo', '2023-05-10', 'Experto en reparaciones eléctricas'),
+-- ('María Gómez', 'CC', '1122334455', 'Alimentación animal', '3012345678', '3118765432', 'Vereda La Palma, Finca El Progreso', 'activo', '2022-11-20', 'Responsable de alimentación de ganado'),
+-- ('Carlos Ruiz', 'TI', '9988776655', 'Limpieza de corrales', '3023456789', '3127654321', 'Vereda El Sauce, Finca La Victoria', 'inactivo', '2021-08-15', 'Actualmente no está en labores activas');
 
 SELECT * FROM administrador
 

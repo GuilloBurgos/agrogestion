@@ -13,9 +13,7 @@ async function cargarTiposTrabajo(){
         option.textContent = trabajo.nombre_trabajo
 
         selectTrabajo.appendChild(option)
-
     })
-
 }
 
 cargarTiposTrabajo()

@@ -28,7 +28,8 @@ app.post("/login", (req, res) => {
         if (result.length > 0) {
             res.json({
                 success: true,
-                rol: result[0].rol
+                rol: result[0].rol,
+                usuario: result[0].usuario
             })
         } else {
             res.json({ success: false })
@@ -161,6 +162,34 @@ app.post("/recuperar-password", (req, res) => {
 
         })
     })
+})
+
+app.get("/total-trabajadores",(req,res)=>{
+
+    const sql = "SELECT COUNT(*) AS total FROM trabajadores"
+
+    db.query(sql,(err,result)=>{
+
+        if(err) return res.status(500).json(err)
+
+        res.json(result[0])
+
+    })
+
+})
+
+app.get("/trabajadores-activos",(req,res)=>{
+
+    const sql = "SELECT COUNT(*) AS activos FROM trabajadores WHERE estado='ACTIVO'"
+
+    db.query(sql,(err,result)=>{
+
+        if(err) return res.status(500).json(err)
+
+        res.json(result[0])
+
+    })
+
 })
 
 

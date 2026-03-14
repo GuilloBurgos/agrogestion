@@ -13,7 +13,7 @@ document.getElementById("form-login").addEventListener("submit", async(event)=>{
   const data = await response.json()
 
   if (data.success) {
-
+    localStorage.setItem("usuario", data.usuario)
     if (data.rol === "DUENIO") {
       window.location.href = "duenio.html"
     } else {
