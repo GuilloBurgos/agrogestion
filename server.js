@@ -19,7 +19,7 @@ app.post("/login", (req, res) => {
 
     const { usuario, password } = req.body
 
-    const sql = "SELECT * FROM usuarios WHERE usuario = ? AND password = ?"
+    const sql = "SELECT * FROM usuarios WHERE usuario = ? AND password = ? AND estado='ACTIVO'"
 
     db.query(sql, [usuario, password], (err, result) => {
 
@@ -192,6 +192,33 @@ app.get("/trabajadores-activos",(req,res)=>{
 
 })
 
+app.get("/administradores", (req, res) => {
+
+    const sql = "SELECT idUsuarios, nombre_completo, usuario, email, estado FROM usuarios WHERE rol='ADMIN'"
+
+    db.query(sql, (err, result) => {
+
+        if(err) return res.status(500).json(err)
+
+        res.json(result)
+    })
+})
+
+app.put("/cambiar-estado-admin/:id", (req,res)=>{
+
+    const { id } = req.params
+    const { estado } = req.body
+
+    const sql = "UPDATE usuarios SET estado=? WHERE idUsuarios=?"
+
+    db.query(sql,[estado,id],(err,result)=>{
+
+        if(err) return res.status(500).json(err)
+
+        res.json({message:"Estado actualizado"})
+    })
+
+})
 
 app.listen(3000,()=>{
     console.log("Servidor en http://localhost:3000")
