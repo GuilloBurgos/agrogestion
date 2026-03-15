@@ -5,36 +5,135 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Dashboard Dueño - AgroGestión360</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        body { background-color: #f8f9fa; }
+        .sidebar {
+            min-height: 100vh;
+            width: 280px;
+            background-color: #212529;
+            color: white;
+            position: fixed;
+        }
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: white;
+            background-color: #198754; /* Verde Agro */
+        }
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+        }
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; position: relative; min-height: auto; }
+            .main-content { margin-left: 0; }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h2>Registrar Administrador</h2>
 
-        <form id="form-admin">
-
-            <input class="form-control mb-2" placeholder="Nombre completo" id="nombre">
-            <select class="form-select mb-2" name="tipo_documento" id="tipo_documento">
-                <option value="ti">TI</option>
-                <option value="cc">CC</option>
-                <option value="ppt">PPT</option>
-            </select>
-            <input class="form-control mb-2" placeholder="Número documento" id="num_documento">
-            <input class="form-control mb-2" placeholder="Email" id="email">
-            <input class="form-control mb-2" placeholder="Teléfono" id="telefono">
-            <input class="form-control mb-2" placeholder="Usuario" id="usuario">
-            <input class="form-control mb-2" placeholder="Password" id="password">
-
-            <button class="btn btn-success">Registrar</button>
-        </form>
+    <div class="sidebar d-flex flex-column p-3">
+        <h4 class="text-center mb-4 text-success fw-bold">AgroGestión360</h4>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-speedometer2 me-2"></i> Dashboard Global
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link active">
+                    <i class="bi bi-person-gear me-2"></i> Gestión Administrador
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link">
+                    <i class="bi bi-graph-up-arrow me-2"></i> Reportes Financieros
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-warning">
+                    <i class="bi bi-shield-lock me-2"></i> Seguridad (Backup)
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none">
+                <i class="bi bi-person-circle fs-4 me-2"></i>
+                <strong>Dueño de Finca</strong>
+            </a>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-        <script src="js/admin.js"></script>
+
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 text-success">Configuración de Administrador Único</h5>
+                    <p class="text-muted small mb-0">Registre al encargado de las operaciones de la finca.</p>
+                </div>
+                <div class="card-body">
+                    <form id="form-admin" class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Nombre Completo</label>
+                            <input class="form-control" id="nombre_completo" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo Documento</label>
+                            <select class="form-select" id="tipo_documento">
+                                <option value="ti">TI</option>
+                                <option value="cc">CC</option>
+                                <option value="ppt">PPT</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label">Número Documento</label>
+                            <input class="form-control" id="num_documento" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Email Corporativo</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono</label>
+                            <input class="form-control" id="telefono">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Usuario de Acceso</label>
+                            <input class="form-control" id="usuario" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Password Provisional</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="bi bi-save me-2"></i>Asignar Administrador
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

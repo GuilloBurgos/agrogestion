@@ -2,7 +2,7 @@ document.getElementById("form-admin").addEventListener("submit", async (e) => {
   e.preventDefault()
 
     const datos = {
-        nombre: nombre.value,
+        nombre_completo: nombre_completo.value,
         tipo_documento: tipo_documento.value,
         num_documento: num_documento.value,
         email: email.value,
