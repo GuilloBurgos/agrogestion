@@ -39,7 +39,7 @@ app.post("/login", (req, res) => {
 
 app.post("/registrar-admin", (req, res) => {
 
-    const { nombre, tipo_documento, num_documento, email, telefono, usuario, password } = req.body
+    const { nombre_completo, tipo_documento, num_documento, email, telefono, usuario, password } = req.body
 
     const sql = `
         INSERT INTO administrador
@@ -48,7 +48,7 @@ app.post("/registrar-admin", (req, res) => {
     `
 
     db.query(sql, 
-        [nombre, tipo_documento, num_documento, email, telefono, usuario, password], 
+        [nombre_completo, tipo_documento, num_documento, email, telefono, usuario, password], 
         (err, result) => {
 
             if (err) return res.status(500).json(err)
@@ -194,7 +194,7 @@ app.get("/trabajadores-activos",(req,res)=>{
 
 app.get("/administradores", (req, res) => {
 
-    const sql = "SELECT idUsuarios, nombre_completo, usuario, email, estado FROM usuarios WHERE rol='ADMIN'"
+    const sql = "SELECT idUsuarios, nombre_completo, usuario, email, telefono, estado FROM usuarios WHERE rol='ADMIN'"
 
     db.query(sql, (err, result) => {
 
@@ -218,6 +218,63 @@ app.put("/cambiar-estado-admin/:id", (req,res)=>{
         res.json({message:"Estado actualizado"})
     })
 
+})
+
+app.get("/perfil-admin/:usuario", (req, res) => {
+
+    const { usuario } = req.params
+
+    const sql = "SELECT email, telefono FROM usuarios WHERE usuario = ?"
+
+    db.query(sql, [usuario], (err, result) => {
+
+        if (err) return res.status(500).json(err)
+
+        res.json(result[0])
+    })
+})
+
+app.get("/perfil-admin/:usuario", (req, res) => {
+
+    const { usuario } = req.params
+
+    const sql = "SELECT email, telefono FROM usuarios WHERE usuario = ?"
+
+    db.query(sql, [usuario], (err, result) => {
+
+        if (err) return res.status(500).json(err)
+
+        res.json(result[0])
+    })
+})
+
+
+app.put("/actualizar-perfil/:usuario", (req, res) => {
+
+    const { usuario } = req.params
+    const { email, telefono, password } = req.body
+
+    let sql
+    let valores
+
+    if (password) {
+
+        sql = "UPDATE usuarios SET email=?, telefono=?, password=? WHERE usuario=?"
+        valores = [email, telefono, password, usuario]
+
+    } else {
+
+        sql = "UPDATE usuarios SET email=?, telefono=? WHERE usuario=?"
+        valores = [email, telefono, usuario]
+
+    }
+
+    db.query(sql, valores, (err, result) => {
+
+        if (err) return res.status(500).json(err)
+
+        res.json({ message: "Perfil actualizado correctamente" })
+    })
 })
 
 app.listen(3000,()=>{

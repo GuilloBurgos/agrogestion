@@ -11,6 +11,7 @@ CREATE TABLE  usuarios (
   password VARCHAR(45) NULL,
   rol ENUM('ADMIN', 'DUENIO') NULL,
   email VARCHAR(255) NULL,
+  telefono VARCHAR(20) NULL,
   estado ENUM('ACTIVO','INACTIVO') DEFAULT 'ACTIVO',
   PRIMARY KEY (idUsuarios))
 ENGINE = InnoDB;
@@ -34,8 +35,8 @@ CREATE TRIGGER trg_insert_admin_to_usuarios
 AFTER INSERT ON administrador
 FOR EACH ROW
 BEGIN
-  INSERT INTO usuarios (nombre_completo, usuario, password, rol, email, estado)
-  VALUES (NEW.nombre_completo, NEW.usuario, NEW.password, 'ADMIN', NEW.email, 'ACTIVO');
+  INSERT INTO usuarios (nombre_completo, usuario, password, rol, email,telefono, estado)
+  VALUES (NEW.nombre_completo, NEW.usuario, NEW.password, 'ADMIN', NEW.email, NEW.telefono, 'ACTIVO');
 END$$
 
 DELIMITER ;
@@ -90,8 +91,8 @@ INSERT INTO administrador
 VALUES
 ('Carlos doria', 1,'1005322211','carlosd@gmail.com','300564352','cdoria','admin321','ADMIN');
 
-INSERT INTO usuarios (nombre_completo, usuario, password, rol,email, estado) 
-VALUES ('María Gómez', 'empleado456', 'empleadopass', 'DUENIO','duenio@gmail.com','ACTIVO');
+INSERT INTO usuarios (nombre_completo, usuario, password, rol,email, telefono, estado) 
+VALUES ('María Gómez', 'empleado456', 'empleadopass', 'DUENIO','duenio@gmail.com','3124568714','ACTIVO');
 
 
 
@@ -109,3 +110,5 @@ SELECT * FROM administrador
 SHOW TABLES
 
 SELECT * FROM trabajadores
+
+DESCRIBE usuarios

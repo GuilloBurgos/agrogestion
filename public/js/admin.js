@@ -11,6 +11,7 @@ document.getElementById("form-admin").addEventListener("submit", async (e) => {
         password: password.value
     }
 
+    document.getElementById("respuesta").textContent = datos.nombre_completo
       await fetch("/registrar-admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,6 +45,7 @@ async function cargarAdministradores(){
                 <td>${admin.nombre_completo}</td>
                 <td>${admin.usuario}</td>
                 <td>${admin.email}</td>
+                <td>${admin.telefono}</td>
                 <td>${estadoBadge}</td>
                 <td>${boton}</td>
             </tr>
@@ -66,3 +68,4 @@ async function cambiarEstado(id,estado){
     cargarAdministradores()
 
 }
+
