@@ -70,7 +70,7 @@ CREATE TABLE trabajadores (
     telefono VARCHAR(20),
     telefono_familiar VARCHAR(20),
     direccion VARCHAR(150),
-    estado ENUM('activo', 'inactivo') DEFAULT 'activo',
+    estado ENUM('ACTIVO', 'INACTIVO') DEFAULT 'ACTIVO',
     fecha_ingreso DATE,
     observaciones TEXT,    
     FOREIGN KEY (id_tipo_trabajo) REFERENCES tipos_trabajo(id_tipo_trabajo)

@@ -12,15 +12,29 @@ document.getElementById("form-login").addEventListener("submit", async(event)=>{
 
   const data = await response.json()
 
-  if (data.success) {
-    localStorage.setItem("usuario", data.usuario)
-    if (data.rol === "DUENIO") {
-      window.location.href = "duenio.html"
-    } else {
-      window.location.href = "admin.html"
-    }
+  // if (data.success) {
+  //   localStorage.setItem("usuario", data.usuario)
+  //   if (data.rol === "DUENIO") {
+  //     window.location.href = "duenio.html"
+  //   } else {
+  //     window.location.href = "admin.html"
+  //   }
 
-  } else {
+  // } else {
+  //   alert("Credenciales incorrectas")
+  // }
+
+  if (data.success) {
+    localStorage.setItem("usuario", usuario)
+    localStorage.setItem("rol", data.rol)
+
+    if (data.rol === "DUENIO") {
+        window.location.href = "duenio.html"
+    } else {
+        window.location.href = "admin.html"
+    }
+  }
+      else {
     alert("Credenciales incorrectas")
   }
   

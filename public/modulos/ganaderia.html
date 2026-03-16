@@ -1,0 +1,156 @@
+<!-- <div class="row justify-content-center mt-4">
+    <div class="col-lg-10">
+        <div class="card shadow-sm border-start border-warning border-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 text-warning fw-bold"><i class="bi bi-plus-circle me-2"></i>Nuevo
+                    Registro de Animal</h5>
+            </div>
+            <div class="card-body p-4">
+                <form id="form-animal" class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">ID / Arete</label>
+                        <input type="text" class="form-control" id="id_animal" placeholder="Ej: AN-001" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Especie</label>
+                        <select class="form-select" id="especie" required>
+                            <option value="Bovino">Bovino (Ganado)</option>
+                            <option value="Porcino">Porcino (Cerdos)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Raza</label>
+                        <select class="form-select" id="raza"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Género</label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="M">
+                                <label class="form-check-label">Macho</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="F">
+                                <label class="form-check-label">Hembra</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nacimiento">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Peso Inicial (Kg)</label>
+                        <input type="number" class="form-control" id="peso">
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-warning px-4 fw-bold">
+                            <i class="bi bi-save me-2"></i>Registrar Animal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<ul class="nav nav-tabs" id="pecuarioTabs">
+
+    <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#animales">
+            Registro Animales
+        </button>
+    </li>
+
+    <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#vacunas">
+            Vacunación
+        </button>
+    </li>
+
+    <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ventas">
+            Ventas
+        </button>
+    </li>
+
+</ul>
+
+<div class="tab-content mt-4">
+
+    <div class="tab-pane fade show active" id="animales">
+        <div class="card shadow-sm border-start border-warning border-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 text-warning fw-bold"><i class="bi bi-plus-circle me-2"></i>Nuevo
+                    Registro de Animal</h5>
+            </div>
+            <div class="card-body p-4">
+        <form id="form-animal" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label fw-bold">ID / Arete</label>
+                <input type="text" class="form-control" id="id_animal" placeholder="Ej: AN-001" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Especie</label>
+                <select class="form-select" id="especie" required>
+                    <option value="Bovino">Bovino (Ganado)</option>
+                    <option value="Porcino">Porcino (Cerdos)</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Raza</label>
+                <select class="form-select" id="raza"></select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Género</label>
+                <div class="mt-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="M">
+                        <label class="form-check-label">Macho</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="F">
+                        <label class="form-check-label">Hembra</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Fecha Nacimiento</label>
+                <input type="date" class="form-control" id="fecha_nacimiento">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">Peso Inicial (Kg)</label>
+                <input type="number" class="form-control" id="peso">
+            </div>
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-warning px-4 fw-bold">
+                    <i class="bi bi-save me-2"></i>Registrar Animal
+                </button>
+            </div>
+        </form>
+           </div>
+        </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="vacunas">
+
+        <h5>Registro de vacunación</h5>
+
+        <form>
+            <!-- campos -->
+        </form>
+
+    </div>
+
+    <div class="tab-pane fade" id="ventas">
+
+        <h5>Registro de venta</h5>
+
+        <form>
+            <!-- campos -->
+        </form>
+
+    </div>
+
+</div>

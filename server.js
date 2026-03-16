@@ -234,20 +234,6 @@ app.get("/perfil-admin/:usuario", (req, res) => {
     })
 })
 
-app.get("/perfil-admin/:usuario", (req, res) => {
-
-    const { usuario } = req.params
-
-    const sql = "SELECT email, telefono FROM usuarios WHERE usuario = ?"
-
-    db.query(sql, [usuario], (err, result) => {
-
-        if (err) return res.status(500).json(err)
-
-        res.json(result[0])
-    })
-})
-
 
 app.put("/actualizar-perfil/:usuario", (req, res) => {
 
@@ -279,4 +265,32 @@ app.put("/actualizar-perfil/:usuario", (req, res) => {
 
 app.listen(3000,()=>{
     console.log("Servidor en http://localhost:3000")
+})
+
+
+app.put("/cambiar-password-duenio", (req,res)=>{
+
+    const { usuario, passwordActual, passwordNueva } = req.body
+
+    const sqlVerificar = "SELECT * FROM usuarios WHERE usuario=? AND password=?"
+
+    db.query(sqlVerificar,[usuario,passwordActual],(err,result)=>{
+
+        if(err) return res.status(500).json(err)
+
+        if(result.length === 0){
+            return res.json({message:"Contraseña actual incorrecta"})
+        }
+
+        const sqlUpdate = "UPDATE usuarios SET password=? WHERE usuario=?"
+
+        db.query(sqlUpdate,[passwordNueva,usuario],(err2)=>{
+
+            if(err2) return res.status(500).json(err2)
+
+            res.json({message:"Contraseña actualizada correctamente"})
+        })
+
+    })
+
 })

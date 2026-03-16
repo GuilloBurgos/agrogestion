@@ -1,3 +1,11 @@
+
+const usuario = localStorage.getItem("usuario")
+const rol = localStorage.getItem("rol")
+
+if(!usuario || rol !== "DUENIO"){
+    window.location.href = "/index.html"
+}
+
 document.getElementById("form-admin").addEventListener("submit", async (e) => {
   e.preventDefault()
 
@@ -69,3 +77,62 @@ async function cambiarEstado(id,estado){
 
 }
 
+const btnLogout = document.getElementById("btnLogout")
+
+if(btnLogout){
+    btnLogout.addEventListener("click", () => {
+
+        const confirmar = confirm("¿Desea cerrar sesión?")
+
+        if(confirmar){
+
+            localStorage.removeItem("usuario")
+            localStorage.removeItem("rol")
+
+            window.location.href = "/index.html"
+        }
+
+    })
+}
+
+const formPassword = document.getElementById("form-cambiar-password")
+
+if(formPassword){
+
+formPassword.addEventListener("submit", async (e)=>{
+
+    e.preventDefault()
+
+    const passwordActual = document.getElementById("passwordActual").value
+    const passwordNueva = document.getElementById("passwordNueva").value
+    const passwordConfirmar = document.getElementById("passwordConfirmar").value
+
+    if(passwordNueva !== passwordConfirmar){
+        alert("Las contraseñas nuevas no coinciden")
+        return
+    }
+
+    const usuario = localStorage.getItem("usuario")
+
+    const response = await fetch("/cambiar-password-duenio",{
+
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            usuario,
+            passwordActual,
+            passwordNueva
+        })
+
+    })
+
+    const data = await response.json()
+
+    alert(data.message)
+
+    formPassword.reset()
+
+})
+}
