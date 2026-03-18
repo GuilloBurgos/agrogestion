@@ -10,16 +10,15 @@ document.getElementById("form-admin").addEventListener("submit", async (e) => {
   e.preventDefault()
 
     const datos = {
-        nombre_completo: nombre_completo.value,
-        tipo_documento: tipo_documento.value,
-        num_documento: num_documento.value,
-        email: email.value,
-        telefono: telefono.value,
-        usuario: usuario.value,
-        password: password.value
+        nombre_completo: document.getElementById("nombre_completo").value,
+        tipo_documento: document.getElementById("tipo_documento").value,
+        num_documento: document.getElementById("num_documento").value,
+        email: document.getElementById("email").value,
+        telefono: document.getElementById("telefono").value,
+        usuario: document.getElementById("usuario").value,
+        password:document.getElementById("password").value
     }
-
-    document.getElementById("respuesta").textContent = datos.nombre_completo
+   
       await fetch("/registrar-admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -136,3 +135,4 @@ formPassword.addEventListener("submit", async (e)=>{
 
 })
 }
+

@@ -91,7 +91,7 @@ document.getElementById("btnLogout").addEventListener("click", () => {
 
 
 
-
+//Contenido dinamico 
 async function cargarModulo(modulo){
 
     const contenedor = document.getElementById("contenido-principal")
@@ -108,6 +108,8 @@ async function cargarModulo(modulo){
 
     if(modulo === "ganaderia"){
         activarFormularioGanaderia()
+        registrarAnimales()
+        cargarAnimales()
     }
 
 }

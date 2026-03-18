@@ -7,7 +7,7 @@ USE agrogestion;
 CREATE TABLE  usuarios (
   idUsuarios INT NOT NULL AUTO_INCREMENT,
   nombre_completo VARCHAR(45) NULL,
-  usuario VARCHAR(45) NULL,
+  usuario VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(45) NULL,
   rol ENUM('ADMIN', 'DUENIO') NULL,
   email VARCHAR(255) NULL,
@@ -77,6 +77,48 @@ CREATE TABLE trabajadores (
 )ENGINE = InnoDB;
 
 
+CREATE TABLE animales (
+    id_animal INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_arete VARCHAR(50) UNIQUE,
+    especie ENUM('BOVINO','PORCINO'),
+    raza VARCHAR(50),
+    sexo ENUM('M','F'),
+    origen ENUM('NACIMIENTO','COMPRA'),
+    fecha_nacimiento DATE,
+    fecha_ingreso DATE,
+    peso_inicial DECIMAL(6,2),
+    estado ENUM('ACTIVO','VENDIDO','MUERTO') DEFAULT 'ACTIVO',
+    observaciones TEXT
+);
+
+CREATE TABLE pesajes (
+    id_pesaje INT AUTO_INCREMENT PRIMARY KEY,
+    id_animal INT,
+    fecha DATE,
+    peso DECIMAL(6,2),
+    observaciones TEXT,
+    FOREIGN KEY (id_animal) REFERENCES animales(id_animal)
+);
+
+
+CREATE TABLE vacunas (
+    id_vacuna INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_vacuna VARCHAR(100),
+    descripcion TEXT
+);
+
+CREATE TABLE historial_vacunas (
+    id_historial INT AUTO_INCREMENT PRIMARY KEY,
+    id_animal INT,
+    id_vacuna INT,
+    fecha_aplicacion DATE,
+    dosis VARCHAR(50),
+    responsable VARCHAR(100),
+    observaciones TEXT,
+    FOREIGN KEY (id_animal) REFERENCES animales(id_animal),
+    FOREIGN KEY (id_vacuna) REFERENCES vacunas(id_vacuna)
+);
+
 INSERT INTO administrador 
 (nombre_completo, tipo_documento, num_documento, email, telefono, usuario, password, rol) 
 VALUES
@@ -112,3 +154,5 @@ SHOW TABLES
 SELECT * FROM trabajadores
 
 DESCRIBE usuarios
+
+SELECT * FROM animales;

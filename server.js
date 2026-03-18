@@ -294,3 +294,57 @@ app.put("/cambiar-password-duenio", (req,res)=>{
     })
 
 })
+
+
+app.post("/registrar-animal",(req,res)=>{
+   const {
+        codigo_arete,
+        especie,
+        raza,
+        genero,
+        origen,
+        fecha_nacimiento,
+        fecha_ingreso,
+        peso_inicial,
+        observaciones
+    } = req.body
+
+    const sql = `
+        INSERT INTO animales
+        (codigo_arete, especie, raza, sexo, origen,
+         fecha_nacimiento, fecha_ingreso, peso_inicial, observaciones)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `
+
+    db.query(sql,
+        [codigo_arete, especie, raza, genero,
+         origen, fecha_nacimiento, fecha_ingreso, peso_inicial, observaciones],
+        (err, result) => {
+
+            if (err) {
+
+                
+                if (err.code === "ER_DUP_ENTRY") {
+                    return res.json({
+                        success: false,
+                        message: " Ya existe un animal con ese código de arete"
+                    })
+                }
+
+                return res.status(500).json(err)
+            }
+
+            res.json({
+                success: true,
+                message: "Animal registrado correctamente"
+            })
+        }
+    ) 
+})
+
+app.get("/animales",(req,res)=>{
+    db.query("SELECT * FROM animales",(err,result)=>{
+        if(err) return res.status(500).json(err)
+        res.json(result)
+    })
+})

@@ -69,6 +69,13 @@
     </li>
 
     <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pesajes">
+            Pesajes
+        </button>
+    </li>
+
+
+    <li class="nav-item">
         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ventas">
             Ventas
         </button>
@@ -77,7 +84,7 @@
 </ul>
 
 <div class="tab-content mt-4">
-
+    <!--Pestaña de registro de animales-->
     <div class="tab-pane fade show active" id="animales">
         <div class="card shadow-sm border-start border-warning border-4">
             <div class="card-header bg-white py-3">
@@ -85,54 +92,97 @@
                     Registro de Animal</h5>
             </div>
             <div class="card-body p-4">
-        <form id="form-animal" class="row g-3">
-            <div class="col-md-4">
-                <label class="form-label fw-bold">ID / Arete</label>
-                <input type="text" class="form-control" id="id_animal" placeholder="Ej: AN-001" required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label fw-bold">Especie</label>
-                <select class="form-select" id="especie" required>
-                    <option value="Bovino">Bovino (Ganado)</option>
-                    <option value="Porcino">Porcino (Cerdos)</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label fw-bold">Raza</label>
-                <select class="form-select" id="raza"></select>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label fw-bold">Género</label>
-                <div class="mt-2">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="M">
-                        <label class="form-check-label">Macho</label>
+                <form id="form-animal" class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">ID / Arete</label>
+                        <input type="text" class="form-control" id="codigo_arete" placeholder="Ej: AN-001" required>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="F">
-                        <label class="form-check-label">Hembra</label>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Especie</label>
+                        <select class="form-select" id="especie" required>
+                            <option value="Bovino">Bovino</option>
+                            <option value="Porcino">Porcino</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Raza</label>
+                        <select class="form-select" id="raza"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Género</label>
+                        <div class="mt-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="M">
+                                <label class="form-check-label">Macho</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="F">
+                                <label class="form-check-label">Hembra</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Origen</label>
+                        <select class="form-select" id="origen">
+                            <option value="NACIMIENTO">Nacimiento</option>
+                            <option value="COMPRA">Compra</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nacimiento">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Fecha Ingreso</label>
+                        <input type="date" class="form-control" id="fecha_ingreso">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Peso Inicial (Kg)</label>
+                        <input type="number" class="form-control" id="peso_inicial">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="observaciones"></textarea>
+                    </div>
+
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-warning px-4 fw-bold">
+                            <i class="bi bi-save me-2"></i>Registrar Animal
+                        </button>
+                    </div>
+                </form>
+
+
+                <div class="card shadow-sm border-0 mt-4">
+                    <div class="card-header bg-white">
+                        <h5 class="text-warning">Animales Registrados</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-striped mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Arete</th>
+                                    <th>Especie</th>
+                                    <th>Raza</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-animales"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <label class="form-label fw-bold">Fecha Nacimiento</label>
-                <input type="date" class="form-control" id="fecha_nacimiento">
-            </div>
-            <div class="col-md-4">
-                <label class="form-label fw-bold">Peso Inicial (Kg)</label>
-                <input type="number" class="form-control" id="peso">
-            </div>
-            <div class="col-12 text-end">
-                <button type="submit" class="btn btn-warning px-4 fw-bold">
-                    <i class="bi bi-save me-2"></i>Registrar Animal
-                </button>
-            </div>
-        </form>
-           </div>
         </div>
-
     </div>
+    <!---Cierre de pestaña de registro de animales-->
 
+    <!--Registro de vacunas-->
     <div class="tab-pane fade" id="vacunas">
 
         <h5>Registro de vacunación</h5>
@@ -142,7 +192,64 @@
         </form>
 
     </div>
+    <!--Fin registro de vacunas-->
 
+
+    <!--Registro de pesaje-->
+    <div class="tab-pane fade" id="pesajes">
+
+        <h5>Registro de pesajes</h5>
+       
+            <div class="card shadow-sm border-start border-primary border-4">
+
+                <div class="card-header bg-white">
+                    <h5 class="fw-bold text-primary">
+                        <i class="bi bi-activity"></i> Registro de Pesaje
+                    </h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form id="form-pesaje" class="row g-3">
+
+                        <div class="col-md-4">
+                            <label class="form-label">Animal</label>
+                            <select class="form-select" id="id_animal_peso">
+                                <option>Seleccionar animal</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Fecha Pesaje</label>
+                            <input type="date" class="form-control" id="fecha_pesaje">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Peso (Kg)</label>
+                            <input type="number" class="form-control" id="peso">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Observaciones</label>
+                            <textarea class="form-control" id="obs_peso"></textarea>
+                        </div>
+
+                        <div class="col-12 text-end">
+                            <button class="btn btn-primary">
+                                <i class="bi bi-save"></i> Registrar Peso
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        
+
+    </div>
+    <!--Fin de registro de pesajes-->
+
+    <!--Registro de ventas-->
     <div class="tab-pane fade" id="ventas">
 
         <h5>Registro de venta</h5>
@@ -152,5 +259,6 @@
         </form>
 
     </div>
+    <!--Fin de registro de ventas-->
 
 </div>
